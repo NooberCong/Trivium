@@ -46,6 +46,8 @@ class _QuestionDisplayState extends State<QuestionDisplay> {
 
   @override
   Widget build(BuildContext context) {
+    TextTheme textTheme = Theme.of(context).textTheme;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
@@ -61,7 +63,7 @@ class _QuestionDisplayState extends State<QuestionDisplay> {
                 ),
                 Text(
                   ' ${state.currQsInd + 1}/${state.numOfQuestions}',
-                  style: TextStyle(color: Colors.grey[700], fontSize: 16),
+                  style: textTheme.subtitle2.copyWith(color: Colors.grey[700]),
                 )
               ],
             ),
@@ -73,12 +75,12 @@ class _QuestionDisplayState extends State<QuestionDisplay> {
               padding: EdgeInsets.symmetric(vertical: 5, horizontal: 7.5),
               child: Text(
                 widget.question.difficulty.toString().substring(11),
-                style: TextStyle(fontSize: 16, color: Colors.white),
+                style: textTheme.subtitle2.copyWith(color: Colors.white),
               ),
             ),
             Text(
               'Score: ${state.score}',
-              style: TextStyle(fontSize: 16),
+              style: textTheme.subtitle2.copyWith(color: Colors.grey[700]),
             ),
           ],
         ),
@@ -106,10 +108,7 @@ class _QuestionDisplayState extends State<QuestionDisplay> {
         ),
         Text(
           widget.question.category,
-          style: TextStyle(
-            color: Colors.grey[500],
-            fontSize: 18,
-          ),
+          style: textTheme.subtitle2.copyWith(color: Colors.grey[600]),
         ),
         const SizedBox(
           height: 10,
@@ -117,8 +116,7 @@ class _QuestionDisplayState extends State<QuestionDisplay> {
         Text(
           widget.question.text,
           textAlign: TextAlign.center,
-          style: TextStyle(
-              color: kPrimaryDark, fontWeight: FontWeight.w500, fontSize: 27),
+          style: textTheme.headline4.copyWith(color: kPrimaryDark),
         ),
         const SizedBox(
           height: 20,
@@ -149,7 +147,7 @@ class _QuestionDisplayState extends State<QuestionDisplay> {
             child: Text(
               _nextBtnText(),
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white, fontSize: 20),
+              style: textTheme.button.copyWith(color: Colors.white),
             ),
           ),
         ),
@@ -196,7 +194,7 @@ class _QuestionDisplayState extends State<QuestionDisplay> {
         return Colors.red;
         break;
       case Difficulty.Medium:
-        return Colors.amber;
+        return Colors.orange;
       case Difficulty.Easy:
         return Colors.green;
       default:

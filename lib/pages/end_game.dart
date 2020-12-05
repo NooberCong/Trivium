@@ -41,7 +41,9 @@ class _EndScreenState extends State<EndScreen> {
   );
   @override
   Widget build(BuildContext context) {
+    TextTheme textTheme = Theme.of(context).textTheme;
     _controller.play();
+
     return Scaffold(
       body: Container(
         constraints: BoxConstraints.expand(),
@@ -74,30 +76,21 @@ class _EndScreenState extends State<EndScreen> {
                 Text(
                   "Congratulations ${widget.arguments.player}!",
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: kPrimaryDark,
-                    fontSize: 26,
-                  ),
+                  style: textTheme.headline5.copyWith(color: kPrimaryDark),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 Text(
                   "Your score: ${widget.arguments.score.value}",
-                  style: TextStyle(
-                    color: kPrimaryDark,
-                    fontSize: 20,
-                  ),
+                  style: textTheme.headline6.copyWith(color: kPrimaryDark),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 Text(
                   "Best score: ${bestScore.value}",
-                  style: TextStyle(
-                    color: kPrimaryDark,
-                    fontSize: 20,
-                  ),
+                  style: textTheme.headline6.copyWith(color: kPrimaryDark),
                 ),
                 const SizedBox(
                   height: 10,
@@ -114,7 +107,7 @@ class _EndScreenState extends State<EndScreen> {
                     child: Text(
                       "Play again",
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                      style: textTheme.button.copyWith(color: Colors.white),
                     ),
                   ),
                 ),

@@ -12,6 +12,7 @@ class QuizzBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     GameControllerState gameState = GameControllerState.of(context);
+
     return Container(
       width: 700,
       constraints: BoxConstraints(
@@ -23,12 +24,14 @@ class QuizzBody extends StatelessWidget {
         color: Colors.white,
       ),
       child: Center(
-        child: _buildBody(gameState),
+        child: _buildBody(context, gameState),
       ),
     );
   }
 
-  _buildBody(GameControllerState state) {
+  _buildBody(BuildContext context, GameControllerState state) {
+    TextTheme textTheme = Theme.of(context).textTheme;
+
     if (state.isLoading == true) {
       return Column(
         children: [
@@ -40,14 +43,10 @@ class QuizzBody extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          const Text(
+          Text(
             "Loading...",
             textAlign: TextAlign.center,
-            style: TextStyle(
-              color: kPrimaryDark,
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
-            ),
+            style: textTheme.headline6.copyWith(color: kPrimaryDark),
           )
         ],
       );

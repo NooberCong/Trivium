@@ -20,6 +20,8 @@ class AnswerDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextTheme textTheme = Theme.of(context).textTheme;
+
     AnswerState state = _answerState(ind);
     return GestureDetector(
       onTap: () => select(ind),
@@ -35,8 +37,7 @@ class AnswerDisplay extends StatelessWidget {
         child: Text(
           text,
           textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 18,
+          style: textTheme.headline6.copyWith(
             color: _textColorFromState(state),
           ),
         ),

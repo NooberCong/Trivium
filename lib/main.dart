@@ -16,7 +16,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: 'NerkoOne'),
+      theme: ThemeData(
+        fontFamily: 'NerkoOne',
+        textTheme: TextTheme(
+          subtitle1: TextStyle(fontSize: 22),
+          subtitle2: TextStyle(fontSize: 16),
+          button: TextStyle(fontSize: 18),
+        ),
+      ),
       home: const StartScreen(),
       onGenerateRoute: onGenerateRoute,
     );

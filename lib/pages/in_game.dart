@@ -58,31 +58,30 @@ class GameScreen extends StatelessWidget {
   }
 
   Future<bool> _confirmExit(BuildContext context) async {
+    TextTheme textTheme = Theme.of(context).textTheme;
+
     return showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
           'Are you sure you want to quit?',
         ),
-        titleTextStyle: TextStyle(
-            color: kPrimaryDark,
-            fontSize: 24,
-            fontWeight: FontWeight.w700,
-            fontFamily: "NerkoOne"),
+        titleTextStyle: textTheme.headline5.copyWith(color: kPrimaryDark),
         content: Text('All your progress will be lost!'),
-        contentTextStyle: TextStyle(
-          color: Colors.red,
-          fontFamily: "NerkoOne",
-          fontSize: 18,
-        ),
+        contentTextStyle: textTheme.subtitle2.copyWith(color: Colors.red),
         actions: <Widget>[
           RaisedButton(
-              child: Text('Cancel', style: TextStyle(fontSize: 16)),
+              child: Text(
+                'Cancel',
+                style: textTheme.button.copyWith(
+                  color: kPrimaryDark,
+                ),
+              ),
               onPressed: () => Navigator.of(context).pop(false)),
           RaisedButton(
               color: kFailed,
               child: Text('Quit',
-                  style: TextStyle(fontSize: 16, color: Colors.white)),
+                  style: textTheme.button.copyWith(color: Colors.white)),
               onPressed: () => Navigator.of(context).pop(true)),
         ],
       ),

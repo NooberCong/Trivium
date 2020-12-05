@@ -21,15 +21,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    TextTheme textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
       backgroundColor: kPrimaryDark,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
+            Text(
               "Settings\n",
-              style: TextStyle(fontSize: 36, color: Colors.white),
+              style: textTheme.headline3.copyWith(color: Colors.white),
             ),
             Container(
               width: screenWidth(context, percentage: 90),
@@ -44,7 +46,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   children: [
                     Text(
                       "Category",
-                      style: TextStyle(fontSize: 24, color: kPrimary),
+                      style: textTheme.subtitle1.copyWith(color: kPrimary),
                     ),
                     DropdownButton(
                       value: config.category,
@@ -52,7 +54,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           .map(
                             (key) => DropdownMenuItem<String>(
                               value: categories[key],
-                              child: Text(key),
+                              child: Text(
+                                key,
+                                style: textTheme.subtitle2,
+                              ),
                             ),
                           )
                           .toList(),
@@ -63,7 +68,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                     Text(
                       "Question Difficulty",
-                      style: TextStyle(fontSize: 20, color: kPrimary),
+                      style: textTheme.subtitle1.copyWith(color: kPrimary),
                     ),
                     DropdownButton(
                       value: config.difficulty,
@@ -71,7 +76,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           .map(
                             (key) => DropdownMenuItem<String>(
                               value: difficulties[key],
-                              child: Text(key),
+                              child: Text(
+                                key,
+                                style: textTheme.subtitle2,
+                              ),
                             ),
                           )
                           .toList(),
@@ -82,7 +90,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                     Text(
                       "Question Type",
-                      style: TextStyle(fontSize: 20, color: kPrimary),
+                      style: textTheme.subtitle1.copyWith(color: kPrimary),
                     ),
                     DropdownButton(
                       value: config.questionType,
@@ -90,7 +98,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           .map(
                             (key) => DropdownMenuItem<String>(
                               value: questionTypes[key],
-                              child: Text(key),
+                              child: Text(
+                                key,
+                                style: textTheme.subtitle2,
+                              ),
                             ),
                           )
                           .toList(),
@@ -101,7 +112,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                     Text(
                       "Question Count",
-                      style: TextStyle(fontSize: 20, color: kPrimary),
+                      style: textTheme.subtitle1.copyWith(color: kPrimary),
                     ),
                     DropdownButton(
                       value: config.numOfQuestions,
@@ -109,7 +120,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           .map(
                             (n) => DropdownMenuItem<String>(
                               value: n,
-                              child: Text(n),
+                              child: Text(n, style: textTheme.subtitle2,),
                             ),
                           )
                           .toList(),

@@ -24,6 +24,7 @@ class _StartScreenState extends State<StartScreen> {
 
   @override
   Widget build(BuildContext context) {
+    TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
       backgroundColor: kPrimary,
       body: Center(
@@ -72,9 +73,6 @@ class _StartScreenState extends State<StartScreen> {
                         controller: _controller,
                         decoration: InputDecoration(
                             labelText: "Your name",
-                            labelStyle: TextStyle(
-                              fontSize: 18,
-                            ),
                             border: InputBorder.none,
                             hintText: 'Player'),
                       ),
@@ -109,8 +107,8 @@ class _StartScreenState extends State<StartScreen> {
                               child: Text(
                                 "Start game",
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 16),
+                                style: textTheme.button
+                                    .copyWith(color: Colors.white),
                               ),
                             ),
                           ),
@@ -132,7 +130,7 @@ class _StartScreenState extends State<StartScreen> {
                             ),
                             child: SvgPicture.asset(
                               "assets/images/settings.svg",
-                              width: 21,
+                              width: 22,
                               color: Colors.white,
                             ),
                           ),
